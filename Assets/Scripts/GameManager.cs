@@ -42,7 +42,15 @@ public class GameManager : MonoBehaviour
         z = 1.5f;
         
        playerPosition=new Vector3(x, y, z);
-        StartGame();
+       if(LoadScreen.Instance!=null)
+        {
+            if(LoadScreen.Instance.gameStarted)
+            {
+            StartGame();
+            }
+
+        }
+       
     }
     private void Update()
     {
