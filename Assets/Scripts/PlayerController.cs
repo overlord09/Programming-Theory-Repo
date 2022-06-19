@@ -27,6 +27,7 @@ public class PlayerController : Movement
         if(other.gameObject.CompareTag("Coin"))
         {
             GameManager.instance.addScore(5);
+            Destroy(other.gameObject);
         }
     }
 }

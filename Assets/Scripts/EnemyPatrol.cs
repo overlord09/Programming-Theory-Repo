@@ -27,7 +27,10 @@ public class EnemyPatrol : Movement
     protected override void Move(Vector3 m_destination)//polymorphism
     {
         base.Move(m_destination);
-        if (areas.Length > destinationPatrol) ;
+        if (areas.Length > destinationPatrol)
+        {
         destinationPatrol=(destinationPatrol+1)%areas.Length;
+
+        }
     }
 }

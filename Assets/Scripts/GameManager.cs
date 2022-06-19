@@ -6,10 +6,18 @@ public class GameManager : MonoBehaviour
 {
     static public GameManager instance { get; private set; }//Encapsulation
     [SerializeField] GameObject player;
+    [SerializeField] GameObject coins;
+    Vector3 coinsPosition;
+
     Vector3 playerPosition;
     float x;
     float y;
     float z;
+    float xCoin;
+    float yCoin;
+    float zCoin;
+    float rate;
+    float delay;
     int score;
     int health;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -36,9 +44,16 @@ public class GameManager : MonoBehaviour
        playerPosition=new Vector3(x, y, z);
         StartGame();
     }
+    private void Update()
+    {
+        xCoin = Random.Range(-15, 15);
+        zCoin = Random.Range(-15, 15);
+    }
 
     public void StartGame()//abstration
     {
+        delay = 5;
+        rate = 2;
         score = 0;
         health = 10;
         scoreText.text="Score: "+ score;
@@ -48,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position= playerPosition;
         }
+        InvokeRepeating("SpawnCoins", delay, rate);
       } 
         public void GameOver()//abstraction
         {
@@ -67,5 +83,10 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
             
+    }
+    void SpawnCoins()//abstration
+    {
+        coinsPosition = new Vector3(xCoin, yCoin, zCoin);
+        Instantiate(coins, coinsPosition, transform.rotation);
     }
 }
