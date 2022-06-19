@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
         z = 1.5f;
         
        playerPosition=new Vector3(x, y, z);
+        StartGame();
     }
 
-    public void StartGame()
+    public void StartGame()//abstration
     {
         score = 0;
         health = 10;
@@ -48,16 +49,16 @@ public class GameManager : MonoBehaviour
             player.transform.position= playerPosition;
         }
       } 
-        public void GameOver()
+        public void GameOver()//abstraction
         {
 
         }
-    public void addScore(int m_score)
+    public void addScore(int m_score)//abstracction
     {
         score+=m_score;
         scoreText.text = "Score " + score;
     }
-    public void SubtractHealth(int m_health)
+    public void SubtractHealth(int m_health)//abstraction
     {
         health -= m_health;
         healthText.text = "Health:" + health;
