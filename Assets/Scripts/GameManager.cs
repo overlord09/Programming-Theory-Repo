@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     float zCoin;
     float rate;
     float delay;
-    int score;
+  public  int score;
     int health;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI healthText;
@@ -76,6 +76,10 @@ public class GameManager : MonoBehaviour
         public void GameOver()//abstraction
         {
 
+        if (LoadScreen.Instance != null)
+        {
+            LoadScreen.Instance.LoadScene(2);
+        }
         }
     public void addScore(int m_score)//abstracction
     {
