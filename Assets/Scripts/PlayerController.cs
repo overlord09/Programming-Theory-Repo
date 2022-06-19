@@ -12,7 +12,21 @@ public class PlayerController : Movement
     {
         rotation = Input.GetAxis("Horizontal");
         direction= Input.GetAxis("Vertical");
-      Move(rotation,direction);
+      Move(rotation,direction);//Inheritance
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Enemy"))
+        {
+            GameManager.instance.SubtractHealth(1);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Coin"))
+        {
+            GameManager.instance.addScore(5);
+        }
     }
 }
